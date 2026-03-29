@@ -1,6 +1,21 @@
+<script>
+export default {
+methods: {
+logout() {
+localStorage.removeItem("loggedIn");
+this.$router.push("/login");
+}
+}
+};
+</script>
+
 <template>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-<a href="/" class="navbar-brand">Ứng dụng Quản lý danh bạ</a>
+
+<a href="/" class="navbar-brand">
+Ứng dụng Quản lý danh bạ
+</a>
+
 <div class="mr-auto navbar-nav">
 <li class="nav-item">
 <router-link :to="{ name: 'contactbook' }" class="nav-link">
@@ -9,5 +24,10 @@ Danh bạ
 </router-link>
 </li>
 </div>
+
+<button class="btn btn-danger" @click="logout">
+Đăng xuất
+</button>
+
 </nav>
 </template>

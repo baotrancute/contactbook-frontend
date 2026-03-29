@@ -1,6 +1,19 @@
 import { createWebHistory, createRouter } from "vue-router";
 import ContactBook from "@/views/ContactBook.vue";
+import Login from "@/views/Login.vue";
+import Register from "@/views/Register.vue";
 const routes = [
+{
+path: "/register",
+name: "register",
+component: Register
+},
+
+{
+path: "/login",
+name: "login",
+component: Login,
+},
 
 {
 path: "/",
@@ -27,5 +40,16 @@ const router = createRouter({
 history: createWebHistory(import.meta.env.BASE_URL),
 routes,
 });
+router.beforeEach((to, from, next) => {
 
+const loggedIn = localStorage.getItem("loggedIn");
+
+if (!loggedIn && to.name !== "login" && to.name !== "register") {
+next("/login");
+}
+else {
+next();
+}
+
+});
 export default router;

@@ -25,8 +25,13 @@ contact: { type: Object, required: true },
 </div>
 <div class="p-1">
 <strong>Liên hệ yêu thích:&nbsp;</strong>
-<i v-if="contact.favorite" class="fas fa-check"></i>
-<i v-else class="fas fa-times"></i>
+<span v-if="contact.favorite">✔</span>
+<span v-else>✘</span>
+
+</div>
+<div class="p-1">
+<strong>Sở thích:</strong>
+{{ contact.hobbies ? contact.hobbies.join(", ") : "" }}
 </div>
 </div>
 </template>

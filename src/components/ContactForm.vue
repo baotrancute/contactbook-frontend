@@ -28,14 +28,52 @@
 
     <ErrorMessage name="phone" class="error-feedback" />
     </div>
+
     <div class="form-group form-check">
 
-    <input name="favorite" type="checkbox" class="form-check-input" v-model="contactLocal.favorite" />
+    <input name="favorite"
+     type="checkbox" 
+     class="form-check-input"
+     v-model="contactLocal.favorite" />
 
     <label for="favorite" class="form-check-label">
     <strong>Liên hệ yêu thích</strong>
-</label>
+    </label>
+    </div>
+
+    <div class="form-group">
+    <label><strong>Sở thích</strong></label>
+
+<div class="form-check">
+<input type="checkbox" value="Thể thao" 
+class="form-check-input"
+v-model="contactLocal.hobbies">
+<label class="form-check-label">Thể thao</label>
 </div>
+
+<div class="form-check">
+<input type="checkbox" value="Âm nhạc"
+ class="form-check-input"
+v-model="contactLocal.hobbies">
+<label class="form-check-label">Âm nhạc</label>
+</div>
+
+<div class="form-check">
+<input type="checkbox" value="Gym" 
+class="form-check-input"
+v-model="contactLocal.hobbies">
+<label class="form-check-label">Gym</label>
+</div>
+
+<div class="form-check">
+<input type="checkbox" value="Máy tính" 
+class="form-check-input"
+v-model="contactLocal.hobbies">
+<label class="form-check-label">Máy tính</label>
+</div>
+
+</div>
+
 <div class="form-group">
 <button class="btn btn-primary">Lưu</button>
 <button v-if="contactLocal._id" type="button" class="ml-2 btn btn-danger"
@@ -84,7 +122,9 @@ phone: yup
 return {
 // Chúng ta sẽ không muốn hiệu chỉnh props, nên tạo biến cục bộ
 // contactLocal để liên kết với các input trên form
-contactLocal: this.contact,
+contactLocal: {...this.contact,
+    hobbies: this.contact.hobbies || []
+},
 contactFormSchema,
 };
 },
